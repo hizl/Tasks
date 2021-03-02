@@ -1,11 +1,12 @@
 package Practice_tasks.Basics_of_software_code_dev_1;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Solving {
     public static void main(String[] args) {
-        System.out.println(maxAndMinNumbers(13, 43, 44, 55));
+        System.out.println(compositionSumOfSquaresOfNumbers());
 
     }
     /*Линейный программы*/
@@ -116,5 +117,64 @@ public class Solving {
 все числа от 1 до введенного пользователем числа*/
 
 
+    static int sumNumbers(int number) {
+        int result = 0;
+        if (number <= 0) {
+            return -1;
+        } else {
+            for (int i = 0; i <= number; i++) {
+                result += i;
+            }
+        }
+        return result;
+    }
+
+
+
+    /*2. Вычислить значения функции на отрезке [а,b] c шагом h:  y = x, x>2; -x,x <=2 */
+
+
+    static int calculateTheValuesOfAFunctionOnASegment() {
+
+        return 00;
+    }
+
+    /*3. Найти сумму квадратов первых ста чисел.*/
+
+    static int sumOfSquaresOfNumbers() {
+        int sum = 0;
+        int upperBound = 100;
+        for (int i = 0; i <= upperBound; i++) {
+            sum += Math.pow(i, 2);
+        }
+        return sum;
+    }
+
+    /*4. Составить программу нахождения произведения квадратов первых двухсот чисел.*/
+
+    static BigInteger compositionSumOfSquaresOfNumbers() {
+        BigInteger number = BigInteger.valueOf(1);
+        for (int i = 2; i <= 200; i++) {
+            number = number.multiply(BigInteger.valueOf((long) i * i));
+        }
+        return number;
+    }
+
+
+    /*5. Даны числовой ряд и некоторое число е. Найти сумму тех членов ряда, модуль которых больше или равен
+    заданному е. Общий член ряда имеет вид: a n = 1/2^n+1/3^n */
+
+
+
+
+    /*6. Вывести на экран соответствий между символами и их численными обозначениями в памяти компьютера.*/
+
+
+    /*7. Для каждого натурального числа в промежутке от m до n вывести все делители, кроме единицы и самого числа.
+m и n вводятся с клавиатуры.*/
+
+
+
+    /*8. Даны два числа. Определить цифры, входящие в запись как первого так и второго числа.*/
 
 }
