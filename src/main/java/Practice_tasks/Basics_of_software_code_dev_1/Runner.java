@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
-
+        outputAllDivisors(new Scanner(System.in));
     }
     /*Линейный программы*/
 
@@ -166,8 +166,17 @@ public class Runner {
     m и n вводятся с клавиатуры.*/
 
     static void outputAllDivisors(Scanner scanner) {
-        int n = scanner.nextInt();
-        int m = scanner.nextInt();
+        int number = scanner.nextInt();
+
+        for (int i = 2; i <= number; i++) {
+            for (int j = 2; j <= i; j++) {
+                if (number % j == 0) {
+                    System.out.print(j + " ");
+                    number = number / j;
+                }
+
+            }
+        }
 
 
     }
