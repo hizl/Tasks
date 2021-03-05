@@ -1,54 +1,31 @@
 package Practice_tasks.Programming_with_classes_4;
 
-public class Student {
-
+class Student {
     private String name;
-    private int numberGroup;
-    private int[] academicPerformance = new int[5];
+    private String initials;
+    private int group;
+    private int grades[];
+    private int nGrades;
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Student(String name, String initials, int group) {
+        this.group = group;
         this.name = name;
+        this.initials = initials;
+        nGrades = 0;
+        grades = new int[5];
     }
 
-
-    public int getNumberGroup() {
-        return numberGroup;
+    void addGrade(int grade) {
+        grades[nGrades] = grade;
+        nGrades++;
     }
 
-    public void setNumberGroup(int numberGroup) {
-        this.numberGroup = numberGroup;
+    boolean isGoodStudent() {
+        for (int i = 0; i < nGrades; ++i) {
+            if (grades[i] != 9 && grades[i] != 10) {
+                return false;
+            }
+        }
+        return true;
     }
-
-    public int[] getAcademicPerformance() {
-        return academicPerformance;
-    }
-
-    public void setAcademicPerformance(int[] academicPerformance) {
-        this.academicPerformance = academicPerformance;
-    }
-
-    public Student[] getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student[] student) {
-        this.student = student;
-    }
-
-    Student[] student = new Student[10];
-
-
-
-
-    public void getStudentsParam() {
-
-
-    }
-
-
 }
