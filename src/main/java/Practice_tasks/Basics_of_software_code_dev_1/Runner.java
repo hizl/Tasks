@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
-        defineTheSameSetOfNumbers(77733,67833);
+        System.out.println(isPointLiesOnTheLine(5, 4, 5, 4, 5, 4));
 
     }
     /*Линейный программы*/
@@ -19,36 +19,37 @@ public class Runner {
 
 
     /*2. Вычислить значение выражения по формуле (все переменные принимают действительные значения):
-(𝑏 + √𝑏^2 + 4𝑎𝑐/2𝑎) − 𝑎^3*𝑐 + 𝑏^−2*  **/
+    (𝑏 + √𝑏^2 + 4𝑎𝑐/2𝑎) − 𝑎^3*𝑐 + 𝑏^−2*  **/
     static double evaluateExpressionValues1(double a, double b, double c) {
         return ((b + Math.sqrt(Math.pow(b, 2) + 4 * a * c)) / (2 * a)) - (Math.pow(a, 3) * c + Math.pow(b, -2));
     }
 
     /*3. Вычислить значение выражения по формуле (все переменные принимают действительные значения):
-((𝑠𝑖𝑛 𝑥 + 𝑐𝑜𝑠 𝑦 / 𝑐𝑜𝑠 𝑥 − 𝑠𝑖𝑛 𝑦)tg xy); */
-    static double evaluateExpressionValues2(double x, double y) {
-        return ((Math.sin(x) + Math.cos(y)) / (Math.cos(x) - Math.sin(y))) * (Math.tan(x * y));
+    (𝑠𝑖𝑛𝑥 + 𝑐𝑜𝑠𝑦) / (𝑐𝑜𝑠𝑥 − 𝑠𝑖𝑛𝑦) *  𝑡𝑔 𝑥𝑦 */
+    static double evaluateExpressionValues(double x, double y) {
+        double z = Math.sin(Math.toRadians(x)) + Math.cos(Math.toRadians(y));
+        z /= Math.cos(Math.toRadians(x)) - Math.sin(Math.toRadians(y));
+        return z *= Math.tan(Math.toRadians(x) * Math.toRadians(y));
     }
 
 
     /*4. Дано действительное число R вида nnn.ddd (три цифровых разряда в дробной и целой частях). Поменять местами
-дробную и целую части числа и вывести полученное значение числа.*/
+    дробную и целую части числа и вывести полученное значение числа.*/
     static double swapExpression(double x) {
         double y = 0.0;
         double n = (int) x;
         return y = (x * 1000) % 1000 + (int) x / 1000.0;
-
     }
 
 
     /*5. Дано натуральное число Т, которое представляет длительность прошедшего времени в секундах. Вывести
-данное значение длительности в часах, минутах и секундах в следующей форме:
-ННч ММмин SSc.*/
-    static void findTime(int s) {
+    данное значение длительности в часах, минутах и секундах в следующей форме:
+    ННч ММмин SSc.*/
+    static void countTheTime(int s) {
         int hour = s / 3600;
         int min = (s - hour * 3600) / 60;
         int sec = s - hour * 3600 - min * 60;
-        System.out.printf("%d %d %d%n", hour, min, sec);
+        System.out.printf("%d hour : %d minutes : %d second %n", hour, min, sec);
 
 
     }
@@ -56,7 +57,7 @@ public class Runner {
     /*6. Для данной области составить линейную программу, которая печатает true, если точка с координатами (х, у)
     принадлежит закрашенной области, и false — в противном случае: */
     static boolean thePointBelongsTo(int x, int y) {
-        return x <= 4 && x >= -4 && y <= 4 && y >= -3;
+        return (x >= -4 && x <= 4 && y >= -3 && y <= 0) || (x >= -2 && x <= 2 && y >= 0 && y <= 4);
     }
 
 
@@ -66,10 +67,16 @@ public class Runner {
 
     /*1. Даны два угла треугольника (в градусах). Определить, существует ли такой треугольник, и если да, то будет ли
      он прямоугольным.*/
-    static boolean isTriangle(double d1, double d2) {
-        double x = d1 + d2;
-        double thirdCornerOfTheTriangle = 180 - x;
-        return thirdCornerOfTheTriangle == 90;
+    static boolean isTriangle(double x, double y) {
+        if ((x + y) >= 180) {
+            System.out.println("the triangle is not exist");
+            return false;
+        } else if (x == 90 || y == 90 || (x + y) == 90) {
+            System.out.println("right triangle");
+            return true;
+        }
+        System.out.println("is not right triangle");
+        return true;
 
     }
 
@@ -109,7 +116,7 @@ public class Runner {
 
 
     /*1. Напишите программу, где пользователь вводит любое целое положительное число. А программа суммирует
-все числа от 1 до введенного пользователем числа*/
+    все числа от 1 до введенного пользователем числа*/
     static int sumNumbers(int number) {
         int result = 0;
         if (number <= 0) {
