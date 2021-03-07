@@ -1,13 +1,13 @@
 package Practice_tasks.Basics_of_software_code_dev_1;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
+
 
 public class Runner {
     public static void main(String[] args) {
-        outputAllDivisors(new Scanner(System.in));
+        defineTheSameSetOfNumbers(77733,67833);
+
     }
     /*Линейный программы*/
 
@@ -44,10 +44,11 @@ public class Runner {
     /*5. Дано натуральное число Т, которое представляет длительность прошедшего времени в секундах. Вывести
 данное значение длительности в часах, минутах и секундах в следующей форме:
 ННч ММмин SSc.*/
-    static int findFunction(int sec) {
-
-
-        return sec * 60;
+    static void findTime(int s) {
+        int hour = s / 3600;
+        int min = (s - hour * 3600) / 60;
+        int sec = s - hour * 3600 - min * 60;
+        System.out.printf("%d %d %d%n", hour, min, sec);
 
 
     }
@@ -68,7 +69,7 @@ public class Runner {
     static boolean isTriangle(double d1, double d2) {
         double x = d1 + d2;
         double thirdCornerOfTheTriangle = 180 - x;
-        return thirdCornerOfTheTriangle == 90 ? true : false;
+        return thirdCornerOfTheTriangle == 90;
 
     }
 
@@ -83,7 +84,7 @@ public class Runner {
 
     /*3. Даны три точки А(х1,у1), В(х2,у2) и С(х3,у3). Определить, будут ли они расположены на одной прямой. */
     static boolean isPointLiesOnTheLine(int x1, int x2, int x3, int y1, int y2, int y3) {
-        return (x1 - y1) * (x2 - y2) * (x3 - y3) == 0 ? true : false;
+        return (x1 - y1) * (x2 - y2) * (x3 - y3) == 0;
     }
 
 
@@ -182,9 +183,18 @@ public class Runner {
     }
 
 
-
-
     /*8. Даны два числа. Определить цифры, входящие в запись как первого так и второго числа.*/
-
+    static void defineTheSameSetOfNumbers(int a, int b) {
+        int[] arr = new int[10];
+        while (a != 0) {
+            arr[a % 10]++;
+            a /= 10;
+        }
+        while (b != 0) {
+            if (arr[b % 10] != 0)
+                System.out.printf("%d ", b % 10);
+            b /= 10;
+        }
+    }
 
 }
